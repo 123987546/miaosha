@@ -1,9 +1,7 @@
 package com.miaosha.day1.exception;
 
-import com.alibaba.druid.sql.visitor.functions.Bin;
 import com.miaosha.day1.result.CodeMsg;
 import com.miaosha.day1.result.Result;
-import com.sun.tools.javac.jvm.Code;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.ControllerAdvice;
