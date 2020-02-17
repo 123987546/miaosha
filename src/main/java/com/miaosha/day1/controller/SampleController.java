@@ -1,6 +1,7 @@
 package com.miaosha.day1.controller;
 
 import com.miaosha.day1.domain.User;
+import com.miaosha.day1.rabbitmq.MQSender;
 import com.miaosha.day1.redis.UserKey;
 import com.miaosha.day1.result.CodeMsg;
 import com.miaosha.day1.result.Result;
@@ -22,12 +23,35 @@ public class SampleController {
     @Autowired
     RedisService redisService;
 
-    @RequestMapping("/hello")
-    public String hello(){
-        return "hello";
-        //return new Result(0,"success","hello_1");
+    @Autowired
+    MQSender mqSender;
+
+    @RequestMapping("/mq")
+    @ResponseBody
+    public Result<String> mq(){
+        mqSender.send("i love u");
+        return Result.success("i love u,too");
     }
 
+    @RequestMapping("/mq/topic")
+    @ResponseBody
+    public Result<String> topic(){
+        mqSender.sendTopic("topic");
+        return Result.success("i love u,too");
+    }
+
+    @RequestMapping("/mq/fanout")
+    @ResponseBody
+    public Result<String> fanout(){
+        mqSender.sendFanout("topic");
+        return Result.success("i love u,too");
+    }
+    @RequestMapping("/mq/headers")
+    @ResponseBody
+    public Result<String> headers(){
+        mqSender.sendHeader("topic");
+        return Result.success("i love u,too");
+    }
 
     @RequestMapping("/db/get")
     @ResponseBody
