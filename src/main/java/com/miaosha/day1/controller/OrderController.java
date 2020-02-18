@@ -7,7 +7,7 @@ import com.miaosha.day1.result.Result;
 import com.miaosha.day1.service.GoodsService;
 import com.miaosha.day1.service.MiaoshaUserService;
 import com.miaosha.day1.service.OrderService;
-import com.miaosha.day1.service.RedisService;
+import com.miaosha.day1.redis.RedisService;
 import com.miaosha.day1.vo.GoodsVo;
 import com.miaosha.day1.vo.OrderVo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
-@RequestMapping("order")
+@RequestMapping("/order")
 public class OrderController {
 
     @Autowired
@@ -30,10 +30,11 @@ public class OrderController {
     GoodsService goodsService;
 
 
-    @RequestMapping(value="/detail",produces = "text/html")
+    @RequestMapping(value="/detail")
     @ResponseBody
     public Result<OrderVo> detail(@RequestParam("orderId")long orderId, MiaoshaUser user, Model model) {
         if(user==null){
+            System.out.println("user is null");
             return Result.error(CodeMsg.SERVER_ERROR);
         }
         OrderInfo orderInfo=orderService.getOrderById(orderId);

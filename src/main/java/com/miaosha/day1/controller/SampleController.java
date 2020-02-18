@@ -3,13 +3,11 @@ package com.miaosha.day1.controller;
 import com.miaosha.day1.domain.User;
 import com.miaosha.day1.rabbitmq.MQSender;
 import com.miaosha.day1.redis.UserKey;
-import com.miaosha.day1.result.CodeMsg;
 import com.miaosha.day1.result.Result;
-import com.miaosha.day1.service.RedisService;
+import com.miaosha.day1.redis.RedisService;
 import com.miaosha.day1.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -26,32 +24,32 @@ public class SampleController {
     @Autowired
     MQSender mqSender;
 
-    @RequestMapping("/mq")
-    @ResponseBody
-    public Result<String> mq(){
-        mqSender.send("i love u");
-        return Result.success("i love u,too");
-    }
-
-    @RequestMapping("/mq/topic")
-    @ResponseBody
-    public Result<String> topic(){
-        mqSender.sendTopic("topic");
-        return Result.success("i love u,too");
-    }
-
-    @RequestMapping("/mq/fanout")
-    @ResponseBody
-    public Result<String> fanout(){
-        mqSender.sendFanout("topic");
-        return Result.success("i love u,too");
-    }
-    @RequestMapping("/mq/headers")
-    @ResponseBody
-    public Result<String> headers(){
-        mqSender.sendHeader("topic");
-        return Result.success("i love u,too");
-    }
+//    @RequestMapping("/mq")
+//    @ResponseBody
+//    public Result<String> mq(){
+//        mqSender.send("i love u");
+//        return Result.success("i love u,too");
+//    }
+//
+//    @RequestMapping("/mq/topic")
+//    @ResponseBody
+//    public Result<String> topic(){
+//        mqSender.sendTopic("topic");
+//        return Result.success("i love u,too");
+//    }
+//
+//    @RequestMapping("/mq/fanout")
+//    @ResponseBody
+//    public Result<String> fanout(){
+//        mqSender.sendFanout("topic");
+//        return Result.success("i love u,too");
+//    }
+//    @RequestMapping("/mq/headers")
+//    @ResponseBody
+//    public Result<String> headers(){
+//        mqSender.sendHeader("topic");
+//        return Result.success("i love u,too");
+//    }
 
     @RequestMapping("/db/get")
     @ResponseBody

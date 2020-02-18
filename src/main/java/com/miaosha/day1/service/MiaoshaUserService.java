@@ -7,6 +7,7 @@ import com.miaosha.day1.dao.MiaoshaUserDao;
 import com.miaosha.day1.domain.MiaoshaUser;
 import com.miaosha.day1.exception.GlobalException;
 import com.miaosha.day1.redis.MiaoshaUserKey;
+import com.miaosha.day1.redis.RedisService;
 import com.miaosha.day1.result.CodeMsg;
 import com.miaosha.day1.utils.MD5Util;
 import com.miaosha.day1.utils.UUIDUtil;
@@ -27,7 +28,7 @@ public class MiaoshaUserService {
 	MiaoshaUserDao miaoshaUserDao;
 	
 	@Autowired
-	RedisService redisService;
+    RedisService redisService;
 	
 	public MiaoshaUser getById(long id) {
 		MiaoshaUser user=redisService.get(MiaoshaUserKey.getById,""+id,MiaoshaUser.class);

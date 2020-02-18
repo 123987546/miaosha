@@ -3,7 +3,7 @@ package com.miaosha.day1.controller;
 import com.miaosha.day1.domain.MiaoshaUser;
 import com.miaosha.day1.result.Result;
 import com.miaosha.day1.service.MiaoshaUserService;
-import com.miaosha.day1.service.RedisService;
+import com.miaosha.day1.redis.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -7,6 +7,7 @@ import com.miaosha.day1.domain.MiaoshaOrder;
 import com.miaosha.day1.domain.MiaoshaUser;
 import com.miaosha.day1.domain.OrderInfo;
 import com.miaosha.day1.redis.OrderKey;
+import com.miaosha.day1.redis.RedisService;
 import com.miaosha.day1.vo.GoodsVo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,7 @@ public class OrderService {
 	OrderDao orderDao;
 
 	@Autowired
-	RedisService redisService;
+    RedisService redisService;
 
 	public MiaoshaOrder getMiaoshaOrderByUserIdGoodsId(long userId, long goodsId) {
 		//return orderDao.getMiaoshaOrderByUserIdGoodsId(userId, goodsId);
@@ -48,13 +49,18 @@ public class OrderService {
 		long orderId = orderDao.insert(orderInfo);
 		MiaoshaOrder miaoshaOrder = new MiaoshaOrder();
 		miaoshaOrder.setGoodsId(goods.getId());
-		miaoshaOrder.setOrderId(orderId);
+		miaoshaOrder.setOrderId(orderInfo.getId());
 		miaoshaOrder.setUserId(user.getId());
 		orderDao.insertMiaoshaOrder(miaoshaOrder);
 
 		redisService.set(OrderKey.getMiaoshaOrderByUidGid, ""+user.getId()+"_"+goods.getId(), miaoshaOrder);
 
 		return orderInfo;
+	}
+
+	public void deleteOrders() {
+		orderDao.deleteOrders();
+		orderDao.deleteMiaoshaOrders();
 	}
 
 }

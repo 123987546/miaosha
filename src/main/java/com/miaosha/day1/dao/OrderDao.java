@@ -2,12 +2,12 @@ package com.miaosha.day1.dao;
 
 import com.miaosha.day1.domain.MiaoshaOrder;
 import com.miaosha.day1.domain.OrderInfo;
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
-
 
 
 @Mapper
@@ -25,6 +25,13 @@ public interface OrderDao {
 	public int insertMiaoshaOrder(MiaoshaOrder miaoshaOrder);
 
 	@Select("select * from order_info where id = #{orderId}")
-	public OrderInfo getOrderById(@Param("orderId")long orderId);
+	public OrderInfo getOrderById(@Param("orderId") long orderId);
+
+	@Delete("delete from order_info")
+	public void deleteOrders();
+
+	@Delete("delete from miaosha_order")
+	public void deleteMiaoshaOrders();
+
 	
 }

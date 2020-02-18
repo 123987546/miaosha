@@ -14,6 +14,7 @@ public class MQConfig {
     public static final String TOPIC_QUEUE1="topic.queue1";
     public static final String TOPIC_QUEUE2="topic.queue2";
     public static final String HEADERS_QUEUE="headers.queue2";
+    public static final String MIAOSHA_QUEUE="miaosha.queue";
     public static final String TOPIC_EXCHANGE="topicExchange";
     public static final String FANOUT_EXCHANGE="fanoutExchange";
     public static final String HEADERS_EXCHANGE="headersExchange";
@@ -27,14 +28,9 @@ public class MQConfig {
     public Queue queue(){
         return new Queue(QUEUE,true);
     }
-
     @Bean
-    public Queue topicQueue1(){
-        return new Queue(TOPIC_QUEUE1,true);
-    }
-    @Bean
-    public Queue topicQueue2(){
-        return new Queue(TOPIC_QUEUE2,true);
+    public Queue miaoshaqueue(){
+        return new Queue(MIAOSHA_QUEUE,true);
     }
 
     /**
@@ -44,6 +40,14 @@ public class MQConfig {
     @Bean
     public TopicExchange topicExchange(){
         return new TopicExchange(TOPIC_EXCHANGE);
+    }
+    @Bean
+    public Queue topicQueue1(){
+        return new Queue(TOPIC_QUEUE1,true);
+    }
+    @Bean
+    public Queue topicQueue2(){
+        return new Queue(TOPIC_QUEUE2,true);
     }
 
     @Bean

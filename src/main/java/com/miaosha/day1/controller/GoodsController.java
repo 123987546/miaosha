@@ -7,7 +7,7 @@ import com.miaosha.day1.redis.GoodsKey;
 import com.miaosha.day1.result.Result;
 import com.miaosha.day1.service.GoodsService;
 import com.miaosha.day1.service.MiaoshaUserService;
-import com.miaosha.day1.service.RedisService;
+import com.miaosha.day1.redis.RedisService;
 import com.miaosha.day1.vo.GoodsDetailVo;
 import com.miaosha.day1.vo.GoodsVo;
 import org.apache.commons.lang3.StringUtils;

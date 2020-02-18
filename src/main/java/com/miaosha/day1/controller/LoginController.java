@@ -5,7 +5,7 @@ import javax.validation.Valid;
 
 import com.miaosha.day1.result.Result;
 import com.miaosha.day1.service.MiaoshaUserService;
-import com.miaosha.day1.service.RedisService;
+import com.miaosha.day1.redis.RedisService;
 import com.miaosha.day1.vo.LoginVo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
