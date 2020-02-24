@@ -10,7 +10,11 @@ import org.apache.commons.lang3.StringUtils;
 public class IsMobileValidator implements ConstraintValidator<IsMobile, String> {
 
 	private boolean required = false;
-	
+
+	/**
+	 * 获取注解，看注解是不是必须的
+	 * @param constraintAnnotation
+	 */
 	public void initialize(IsMobile constraintAnnotation) {
 		required = constraintAnnotation.required();
 	}

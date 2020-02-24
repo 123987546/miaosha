@@ -95,7 +95,7 @@ public class RedisService {
         try{
             jedis=jedisPool.getResource();
             String realKey=prefix.getPrefix()+key;
-            return jedis.incr(key);
+            return jedis.incr(realKey);
         }finally {
             returnToPool(jedis);
         }
